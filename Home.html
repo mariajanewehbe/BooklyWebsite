@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="google-signin-client_id" content="829008875374-onrkrcqghhe8tandqn5gsrkrc37ioffb.apps.googleusercontent.com">
     <link rel="stylesheet" href="Home_style.css" />
     <link rel="icon" href="images/open-book.png" />
     <title>Bookly: Read with Us</title>
@@ -22,6 +25,7 @@
             <li><a href="Home.html">Home</a></li>
             <li><a href="Genres.html">Genres</a></li>
             <li><a href="Recommendations.html">Recommendations</a></li>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
           </ul>
         </nav>
       </div>
