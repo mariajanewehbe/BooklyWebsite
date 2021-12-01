@@ -25,12 +25,7 @@
             <li><a href="Home.html">Home</a></li>
             <li><a href="Genres.html">Genres</a></li>
             <li><a href="Recommendations.html">Recommendations</a></li>
-            <form method="GET", action="http://localhost:8081/user">
-              <div class="g-signin2" data-onsuccess="onSignIn"></div>
-              <input type="text" id="txt_name" name="name" value="" style="display: none;"/>
-              <input type="text" id="image" name="image" value="" style="display: none;"/>
-              <input type="submit" id="submit" style="display: none;"/>
-              </form>
+            <li><a href="personalbooks"><%=name%></a></li>
           </ul>
         </nav>
       </div>
@@ -132,6 +127,5 @@
         /></a>
       </div>
     </footer>
-    <script src="./Home.js"></script>
   </body>
 </html>
