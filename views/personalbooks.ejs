@@ -1,1 +1,50 @@
-<h1>THIS IS A TEST</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="personalbooks_style.css" />
+    <link rel="icon" href="images/open-book.png" />
+    <title>Personal Books</title>
+  </head>
+  <body>
+    <div class="nav_bar">
+      <nav>
+        <a href="Home.html"
+          ><img src="images/logo.jpg" alt="Bookly Logo" class="nav_logo"
+        /></a>
+        <ul>
+          <li><a href="Home.html">Home</a></li>
+          <li><a href="Genres.html">Genres</a></li>
+          <li><a href="Recommendations.html">Recommendations</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="buttons">
+      <button onclick="addToggle()">Add a Book</button>
+      <form id="addForm" action="" style="display: none;">
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title"> <br>
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author"> <br>
+          <label for="cover">Cover:</label>
+          <input type="file" name="cover" id="cover" accept="image/*" />
+          <label for="review">Review:</label>
+          <textarea name="review" id="review" cols="30" rows="10"></textarea>
+      </form>
+      <button onclick="">Remove a Book</button>
+
+    </div>
+    <script>
+      function addToggle() {
+        var x = document.getElementById("addForm");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
