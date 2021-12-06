@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="personalbooks_style.css" />
     <link rel="icon" href="images/open-book.png" />
-    <title>Personal Books</title>
+    <title><%=title%></title>
   </head>
   <body>
     <div class="nav_bar">
       <nav>
-        <a href="Home.html"
+        <a href="Home"
           ><img src="images/logo.jpg" alt="Bookly Logo" class="nav_logo"
         /></a>
         <ul>
-          <li><a href="Home.html">Home</a></li>
-          <li><a href="Genres.html">Genres</a></li>
-          <li><a href="Recommendations.html">Recommendations</a></li>
+          <li><a href="Home">Home</a></li>
+          <li><a href="Genres">Genres</a></li>
+          <li><a href="Recommendations">Recommendations</a></li>
+          <li><a href="personalbooks"><%=name%></a></li>
         </ul>
       </nav>
     </div>
@@ -36,15 +37,6 @@
       <button onclick="">Remove a Book</button>
 
     </div>
-    <script>
-      function addToggle() {
-        var x = document.getElementById("addForm");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
-      }
-    </script>
+    <script src="../personalbooks.js"> </script>
   </body>
 </html>
