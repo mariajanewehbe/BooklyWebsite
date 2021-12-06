@@ -30,7 +30,8 @@ app.get("/",function(req,res){
 });
 //fetch the dynamic page when the user is logged in or when home is looked for
 app.get("/Home",function(req,res){
-    name = req.query.name;
+    if(name == ""){name = req.query.name;}
+    
     let title = "Bookly: Read With Us";
     ejs.renderFile(__dirname+"/views/Home.ejs",{name: name , title: title},function(error,data){
         res.send(data);
@@ -90,6 +91,12 @@ app.get("/Thriller",function(req,res){
     let title = "Thriller";
     ejs.renderFile(__dirname+"/views/Thriller.ejs",{name: name,title: title},function(error,data){
         res.send(data);
+    });
+});
+ app.get("/Mystery",function(req,res){
+        let title = "Mystery";
+        ejs.renderFile(__dirname+"/views/Mystery.ejs",{name: name,title: title},function(error,data){
+            res.send(data);
     });
 });
 
