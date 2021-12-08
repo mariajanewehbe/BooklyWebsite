@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Genres_style.css" />
+    <title><%=title%></title>
+</head>
+<body>
+  <div class="nav_bar">
+    <nav>
+      <a href="Home"
+        ><img src="images/logo.jpg" alt="Bookly Logo" class="nav_logo"
+      /></a>
+      <ul>
+        <li><a href="Home">Home</a></li>
+        <li><a href="Genres">Genres</a></li>
+        <li><a href="Recommendations">Recommendations</a></li>
+        <li><a href="personalbooks"><%=name%></a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="main">
+    <div class="row1">
+      <div class="searchbar">
+          <input type="text" placeholder="Search For Book" name="txt_search" id="searchtext" class="searchtext">
+          <input type="submit" name="searchbutton" id="btnsearch" onclick="searchForBooks()" class="btnsearch">
+      </div>
+    </div>
+    <div class="results" id="results">
+    </div>
+  <footer>
+    <img src="images/logo.jpg" alt="Bookly Logo" class="footer-logo" />
+    <p>Our goal at Bookly is to help you decide on your next read.</p>
+    <p>Follow us for more:</p>
+    <div class="socials">
+      <a
+        href="https://www.facebook.com/mariajane.wehbe.9"
+        target="_blank"
+        rel="noreferrer noopener"
+        title="Facebook"
+        ><img src="images/facebook-brands.svg" alt="Facebook"
+      /></a>
+      <a
+        href="https://www.instagram.com/mariajanewehbe"
+        target="_blank"
+        rel="noreferrer noopener"
+        title="Instagram"
+        ><img src="images/instagram-brands.svg" alt="Instagram"
+      /></a>
+      <a
+        href="https://twitter.com/mariajane_wehbe"
+        target="_blank"
+        rel="noreferrer noopener"
+        title="Twitter"
+        ><img src="images/twitter-square-brands.svg" alt="Twitter"
+      /></a>
+      <a
+        href="https://www.goodreads.com/user/show/37042627-maria-jane"
+        target="_blank"
+        rel="noreferrer noopener"
+        title="Goodreads"
+        ><img src="images/goodreads-brands.svg" alt="Goodreads"
+      /></a>
+    </div>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../Home.js"></script>
+</body>
+</html>

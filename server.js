@@ -99,6 +99,12 @@ app.get("/Thriller",function(req,res){
             res.send(data);
     });
 });
+app.get("/Search",function(req,res){
+    let title = "Search";
+    ejs.renderFile(__dirname+"/views/Search.ejs",{name: name,title: title},function(error,data){
+        res.send(data);
+    });
+});
 
 // ************************SUB PAGES***********************************//
 
