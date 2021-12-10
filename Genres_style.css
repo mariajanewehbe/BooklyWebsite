@@ -113,21 +113,32 @@ nav {
 }
 .results{
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 .searchbar{
+  margin-top:30px ;
+  margin-bottom:30px ;
   border: solid 1px #e4a999;
-  width: 300px;
+  width: 500px;
+  height: 50px;
+  display: flex;
 }
 .searchbar .searchtext{
-  width: 200px;
+  width: 80%;
+  color: #e4a999;
+  font-size: large;
+  background-color: black;
+  font-family: Comfortaa;
+}
+.searchbar .searchtext:focus{
+ outline: none;
 }
 .searchbar .btnsearch{
-  width: 90px;
-  float: left;
+  float: right;
+  width: 20%;
+  background-color: #e4a999 ;
+  font-family: Comfortaa;
 }
 .pic{
   width: 200px;
@@ -138,6 +149,30 @@ nav {
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2),
     0 6px 20px 0 rgba(255, 255, 255, 0.19);
     background-size: cover;
+}
+.resultbox{
+  width: auto;
+  height: auto;
+  text-align: center;
+  border: solid 1px #e4a999;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2),
+    0 6px 20px 0 rgba(255, 255, 255, 0.19);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.results p{
+  text-align: center; 
+  line-height: 100px;
+  text-decoration: none;
+  color: #e4a999;
+  font-weight: bold;
+  margin-top:  -30px;
+}
+.results .resultbox a{
+ font-size: 25px;
 }
 .romance {
   background-image: url("images/romance.jpg");
@@ -215,8 +250,8 @@ nav {
 
 footer {
   background-color: black;
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  top: 120px;
   width: 100%;
   height: 100px;
   color: white;
