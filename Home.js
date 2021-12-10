@@ -14,10 +14,10 @@ function searchForBooks(){
       dataType: "json",
       success: function(data){
         for(i =0; i < data.items.length; i++){ 
-          results.innerHTML +=  "<div class=\"pic\"><a target= _blank href="+data.items[i].volumeInfo.previewLink+">"+ data.items[i].volumeInfo.title +"</a>" + "</div>"
+          results.innerHTML +=  "<div class=\"resultbox\"><a target= _blank href="+data.items[i].volumeInfo.previewLink+">"+ data.items[i].volumeInfo.title +"</a><p> Author: " + data.items[i].volumeInfo.authors+"</p>" +"</div>"
         }
       },
       type: 'GET'
   });
-  document.getElementById(btnsearch).click();
+  document.getElementById(btnsearch).click();   
 }
