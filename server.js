@@ -79,6 +79,17 @@ app.get("/personalbooks", function (req, res) {
     }
   );
 });
+
+app.get("/list", function (req, res) {
+    let title = "List";
+    ejs.renderFile(
+      __dirname + "/views/list.ejs",
+      { name: name, title: title },
+      function (error, data) {
+        res.send(data);
+      }
+    );
+  });
 // ************************MAIN PAGES***********************************//
 
 // ************************SUB PAGES***********************************//
@@ -158,34 +169,42 @@ app.get("/Search", function (req, res) {
 
 // ************************DATABASE***********************************//
 mongoose.connect(
-    "mongodb+srv://bookly:bookly123@cluster0.qgrk0.mongodb.net/BookDb",
-    { useNewUrlParser: true },
-    { useUnifiedTopology: true },
-  );
+  "mongodb+srv://bookly:bookly123@cluster0.qgrk0.mongodb.net/BookDb",
+  { useNewUrlParser: true },
+  { useUnifiedTopology: true }
+);
 
-  const bookSchema = {
-    title: String,
-    author: String,
-    review: String
-  };
+const bookSchema = {
+  title: String,
+  author: String,
+  review: String,
+};
 
-  const Book = mongoose.model("Book", bookSchema);
+const Book = mongoose.model("Book", bookSchema, "books");
 
-  app.get('/', function(req, res){
-   res.sendFile("personalbooks.ejs");
+app.get('/', function(req, res){
+    res.sendFile("personalbooks.ejs");
+   });
+
+app.get("/", function (req, res) {
+  Book.find({}, function (err, books) {
+    res.render('list', {
+      booksList: books,
+    });
   });
+});
 
-  app.post("/", function(req, res) {
-      let newBoook = new Book({
-          title: req.body.title,
-          author: req.body.author,
-          review: req.body.review
-      });
-      newBoook.save();
-      res.redirect("/");
-  })
-  
-  // ************************DATABASE***********************************//
+app.post("/", function (req, res) {
+  let newBoook = new Book({
+    title: req.body.title,
+    author: req.body.author,
+    review: req.body.review,
+  });
+  newBoook.save();
+  res.redirect("/");
+});
+
+// ************************DATABASE***********************************//
 
 let server = app.listen(8081, function () {
   var host = server.address().address;
