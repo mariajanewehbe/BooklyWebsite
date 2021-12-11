@@ -32,6 +32,8 @@ let name = "";
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/Home.html");
 });
+
+
 //fetch the dynamic page when the user is logged in or when home is looked for
 app.get("/Home", function (req, res) {
   if (name == "") {
@@ -183,6 +185,15 @@ app.post("/", function (req, res) {
   newBoook.save();
   res.redirect("/");
 });
+
+app.post('/remove', function(req, res) {
+  let rTitle = req.body.title;
+  Book.findByIdAndDelete({title: rTitle});
+})
+
+app.get('/remove', function(req, res){
+  res.sendFile(__dirname + "/Home.html");
+   });
 
 app.get('/', function(req, res){
   let title = "Personal Books";

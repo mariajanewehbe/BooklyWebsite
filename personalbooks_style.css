@@ -140,3 +140,8 @@ form {
   width: 500px;
   align-self: center;
 }
+
+.rLabel{
+  width: auto;
+  text-align: center;
+}

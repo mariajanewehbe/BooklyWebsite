@@ -7,6 +7,15 @@ function addToggle() {
   }
 }
 
+function removeToggle() {
+  var x = document.getElementById("removeForm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
 function getPName() {
   let name = "";
   if (auth2.isSignedIn.get()) {

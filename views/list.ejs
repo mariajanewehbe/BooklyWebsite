@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="personalbooks_style.css" />
+    <link rel="stylesheet" href="list_style.css" />
 
     <title><%=title%></title>
 </head>
@@ -24,12 +24,27 @@
           </nav>
         </div>
         <div class="showbooks">
-          <% if (booksList) { %>
-           <% booksList.forEach(book=> { %> 
-          <p> <%= book.title %> </p> 
-         <%})%>  
-        <%}%>
-
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Review</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (booksList) { %>
+                <% booksList.forEach(book=> { %> 
+              <tr>
+                <td><%= book.title %></td>
+                <td><%= book.author %></td>
+                <td><%= book.review %></td>
+              </tr>
+              <%})%>  
+              <%}%>
+            </tbody>
+          </table>
       </div>
 </body>
 </html>
