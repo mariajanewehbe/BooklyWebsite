@@ -165,11 +165,11 @@ mongoose.connect(
   //fetch the page with the logged in user personal books.
 app.get("/personalbooks", function (req, res) {
     let title = "Personal Books";
-    Book.find({} , function(err,books){
+    Book.find({} , function(err, Book){
         ejs.renderFile(__dirname + "/views/personalbooks.ejs", {
-        booklist = books,
-        name: name,
-        title:title
+          booklist:Book,
+          name: name,
+          title:title
         });
     //res.sendFile("personalbooks.ejs");
     });
