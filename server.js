@@ -33,7 +33,6 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/Home.html");
 });
 
-
 //fetch the dynamic page when the user is logged in or when home is looked for
 app.get("/Home", function (req, res) {
   if (name == "") {
@@ -81,7 +80,6 @@ app.get("/personalbooks", function (req, res) {
     }
   );
 });
-
 
 // ************************MAIN PAGES***********************************//
 
@@ -173,7 +171,7 @@ const bookSchema = {
   review: String,
 };
 
-const Book = mongoose.model('Book', bookSchema);
+const Book = mongoose.model("Book", bookSchema, "books");
 
 app.post("/", function (req, res) {
   let newBoook = new Book({
@@ -183,39 +181,37 @@ app.post("/", function (req, res) {
   });
   console.log(newBoook);
   newBoook.save();
-  res.redirect("/");
+  res.redirect("/personalbooks");
 });
 
-app.post('/remove', function(req, res) {
-  let rTitle = req.body.title;
-  Book.findByIdAndDelete({title: rTitle});
-})
+app.post("/remove", function (req, res) {
+  let rTitle = req.body.rTitle;
+  Book.deleteMany({title: rTitle}, function (err) {
+    if (err) console.log(err);
+    console.log("Successful deletion");
+  });
+  res.redirect("/personalbooks");
+});
 
-app.get('/remove', function(req, res){
-  res.sendFile(__dirname + "/Home.html");
-   });
-
-app.get('/', function(req, res){
+app.get("/", function (req, res) {
   let title = "Personal Books";
-    ejs.renderFile(__dirname + "/views/personalbooks.ejs",{
-      title:title,
-      name:name
-    });
-   });
+  ejs.renderFile(__dirname + "/views/personalbooks.ejs", {
+    title: title,
+    name: name,
+  });
+});
 
 app.get("/list", (req, res) => {
   let title = "List";
   Book.find({}, function (err, books) {
-      console.log(books);
-       res.render(__dirname + '/views/list', {
-        booksList: books,
-        title: title,
-        name : name
-       });
-
+    console.log(books);
+    res.render(__dirname + "/views/list", {
+      booksList: books,
+      title: title,
+      name: name,
+    });
   });
 });
-
 
 // ************************DATABASE***********************************//
 
