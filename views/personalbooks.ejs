@@ -24,7 +24,7 @@
     </div>
     <div class="buttons">
       <button onclick="addToggle()">Add a Book</button>
-      <form id="addForm" method="post" action="/" style="display: none;">
+      <form id="addForm" method="post" action="/sendDB" style="display: none;">
           <label for="title">Title:</label>
           <input type="text" name="title" id="title"> <br>
           <label for="author">Author:</label>
@@ -36,8 +36,12 @@
           <input type="Submit" value="Submit">
       </form>
       <button onclick="">Remove a Book</button>
-
     </div>
+   <div class="showbooks">
+      <%booklist.forEach(Book => {
+          <p><%= Book.title%></p>
+      <%});%>
+   </div>
     <script src="../personalbooks.js"> </script>
   </body>
 </html>

@@ -68,17 +68,8 @@ app.get("/Recommendations", function (req, res) {
   );
 });
 
-//fetch the page with the logged in user personal books.
-app.get("/personalbooks", function (req, res) {
-  let title = "Personal Books";
-  ejs.renderFile(
-    __dirname + "/views/personalbooks.ejs",
-    { name: name, title: title },
-    function (error, data) {
-      res.send(data);
-    }
-  );
-});
+
+ 
 // ************************MAIN PAGES***********************************//
 
 // ************************SUB PAGES***********************************//
@@ -171,19 +162,28 @@ mongoose.connect(
 
   const Book = mongoose.model("Book", bookSchema);
 
-  app.get('/', function(req, res){
-   res.sendFile("personalbooks.ejs");
+  //fetch the page with the logged in user personal books.
+app.get("/personalbooks", function (req, res) {
+    let title = "Personal Books";
+    Book.find({} , function(err,books){
+        ejs.renderFile(__dirname + "/views/personalbooks.ejs", {
+        booklist = books,
+        name: name,
+        title:title
+        });
+    //res.sendFile("personalbooks.ejs");
+    });
   });
 
-  app.post("/", function(req, res) {
+  app.post("/sendDB", function(req, res) {
       let newBoook = new Book({
           title: req.body.title,
           author: req.body.author,
           review: req.body.review
       });
       newBoook.save();
-      res.redirect("/");
-  })
+      //res.redirect("/");
+  });
   
   // ************************DATABASE***********************************//
 
