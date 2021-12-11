@@ -38,7 +38,9 @@ nav ul {
   display: flex;
   list-style-type: none;
 }
-
+.showbooks p{
+  color: #e4a999;
+}
 nav li a {
   display: block;
   height: 100%;

@@ -80,16 +80,7 @@ app.get("/personalbooks", function (req, res) {
   );
 });
 
-app.get("/list", function (req, res) {
-    let title = "List";
-    ejs.renderFile(
-      __dirname + "/views/list.ejs",
-      { name: name, title: title },
-      function (error, data) {
-        res.send(data);
-      }
-    );
-  });
+
 // ************************MAIN PAGES***********************************//
 
 // ************************SUB PAGES***********************************//
@@ -180,19 +171,7 @@ const bookSchema = {
   review: String,
 };
 
-const Book = mongoose.model("Book", bookSchema, "books");
-
-app.get('/', function(req, res){
-    res.sendFile("personalbooks.ejs");
-   });
-
-app.get("/", function (req, res) {
-  Book.find({}, function (err, books) {
-    res.render('list', {
-      booksList: books,
-    });
-  });
-});
+const Book = mongoose.model('Book', bookSchema);
 
 app.post("/", function (req, res) {
   let newBoook = new Book({
@@ -200,9 +179,32 @@ app.post("/", function (req, res) {
     author: req.body.author,
     review: req.body.review,
   });
+  console.log(newBoook);
   newBoook.save();
   res.redirect("/");
 });
+
+app.get('/', function(req, res){
+  let title = "Personal Books";
+    ejs.renderFile(__dirname + "/views/personalbooks.ejs",{
+      title:title,
+      name:name
+    });
+   });
+
+app.get("/list", (req, res) => {
+  let title = "List";
+  Book.find({}, function (err, books) {
+      console.log(books);
+       res.render(__dirname + '/views/list', {
+        booksList: books,
+        title: title,
+        name : name
+       });
+
+  });
+});
+
 
 // ************************DATABASE***********************************//
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="personalbooks_style.css" />
 
-    <title>Document</title>
+    <title><%=title%></title>
 </head>
 <body>
     <body>
@@ -23,8 +23,13 @@
             </ul>
           </nav>
         </div>
-    <!-- <%= booksList.forEach(book => { %> -->
-        <!-- <p> <=% booksList% > </p> -->
-      <!-- <%= }) %> -->
+        <div class="showbooks">
+          <% if (booksList) { %>
+           <% booksList.forEach(book=> { %> 
+          <p> <%= book.title %> </p> 
+         <%})%>  
+        <%}%>
+
+      </div>
 </body>
 </html>
